@@ -1,0 +1,186 @@
+@import "@fontsource/nunito/400.css";
+@import "@fontsource/nunito/600.css";
+@import "@fontsource/nunito/700.css";
+@import "@fontsource/nunito/800.css";
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Taily Pet-Care Marketplace Design System */
+
+@layer base {
+  :root {
+    /* Warm, inviting pet-friendly palette */
+    --background: 30 40% 98%;
+    --foreground: 25 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 30% 15%;
+
+    /* Amber/Orange primary - warm and friendly */
+    --primary: 38 92% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft cream secondary */
+    --secondary: 35 40% 95%;
+    --secondary-foreground: 25 30% 20%;
+
+    /* Muted warm tones */
+    --muted: 30 20% 92%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Warm accent */
+    --accent: 25 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 38 92% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Taily tokens */
+    --amber-glow: 38 100% 70%;
+    --warm-brown: 25 40% 25%;
+    --cream: 40 60% 97%;
+    --soft-shadow: 0 4px 20px -4px hsl(25 30% 15% / 0.1);
+    --card-shadow: 0 8px 30px -8px hsl(25 30% 15% / 0.12);
+    --hero-gradient: linear-gradient(135deg, hsl(38 92% 50%), hsl(25 80% 55%));
+
+    --sidebar-background: 30 40% 98%;
+    --sidebar-foreground: 25 30% 25%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 35 40% 95%;
+    --sidebar-accent-foreground: 25 30% 20%;
+    --sidebar-border: 30 20% 88%;
+    --sidebar-ring: 38 92% 50%;
+  }
+
+  .dark {
+    --background: 25 25% 8%;
+    --foreground: 35 30% 95%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 35 30% 95%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 35 30% 95%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 25 20% 18%;
+    --secondary-foreground: 35 30% 90%;
+
+    --muted: 25 15% 20%;
+    --muted-foreground: 30 15% 60%;
+
+    --accent: 25 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 35%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 38 92% 50%;
+
+    --sidebar-background: 25 25% 10%;
+    --sidebar-foreground: 35 30% 90%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 25 15% 18%;
+    --sidebar-accent-foreground: 35 30% 90%;
+    --sidebar-border: 25 15% 20%;
+    --sidebar-ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--hero-gradient);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--soft-shadow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--card-shadow);
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+/* Leaflet custom marker styles */
+.custom-marker {
+  background: transparent;
+  border: none;
+}
+
+.custom-marker > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  box-shadow: 0 4px 12px -2px hsl(var(--primary) / 0.4);
+  transition: transform 0.2s ease;
+}
+
+.custom-marker > div:hover {
+  transform: scale(1.1);
+}
+
+/* Override Leaflet popup styles for better integration */
+.leaflet-popup-content-wrapper {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.leaflet-popup-tip {
+  background: hsl(var(--card));
+}
+
+.leaflet-popup-content {
+  margin: 0;
+}
+
+.leaflet-container {
+  font-family: inherit;
+}
